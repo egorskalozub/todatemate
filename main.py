@@ -1,15 +1,14 @@
-from telegram.ext import Updater
-import handlers
+from telegram.ext import Updater, CommandHandler
 import config
+import handlers
 
 def main():
-    updater = Updater(token=config.TELEGRAM_API_TOKEN, use_context=True)
+    updater = Updater(token=config.TELEGRAM_TOKEN, use_context=True)
     dp = updater.dispatcher
 
-    # Add handlers
-    handlers.register(dp)
+    dp.add_handler(CommandHandler("start", handlers.start))
+    dp.add_handler(CommandHandler("help", handlers.help))
 
-    # Start the Bot
     updater.start_polling()
     updater.idle()
 

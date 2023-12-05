@@ -1,10 +1,11 @@
-from telegram.ext import CommandHandler, MessageHandler, Filters
+from telegram import Update
+from telegram.ext import CallbackContext
 import bot_logic
 
-def start(update, context):
-    # Handle start command
-    bot_logic.handle_start(update, context)
+def start(update: Update, context: CallbackContext):
+    update.message.reply_text('Hello! Use /help to get help.')
 
-def register(dp):
-    dp.add_handler(CommandHandler("start", start))
-    # Add more handlers
+def help(update: Update, context: CallbackContext):
+    bot_logic.send_help_button(update, context)
+    
+

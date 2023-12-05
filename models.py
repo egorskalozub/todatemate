@@ -1,1 +1,1 @@
-# Define SQLAlchemy models or Pydantic models
+# Define database models here.
